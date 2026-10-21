@@ -1,0 +1,21 @@
+{{- /* The blog moved to baseURL: every page (and, via 404.html, every unknown
+       path) sends visitors to the same path there. GitHub Pages can't do HTTP
+       redirects, so this is canonical + meta refresh + JS. */ -}}
+{{- $target := .Site.BaseURL -}}
+{{- if ne .Kind "404" }}{{ $target = .Permalink }}{{ end -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Site.Title }} has moved</title>
+  {{- if ne .Kind "404" }}
+  <link rel="canonical" href="{{ $target }}">
+  {{- end }}
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url={{ $target }}">
+  <script>location.replace(new URL(location.pathname + location.search + location.hash, {{ .Site.BaseURL }}));</script>
+</head>
+<body>
+  <p>{{ .Site.Title }} has moved to <a href="{{ $target }}">{{ $target }}</a></p>
+</body>
+</html>

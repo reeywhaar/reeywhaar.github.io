@@ -1,7 +1,6 @@
-baseURL = 'http://reeywhaar.github.io/'
+baseURL = 'https://notes.vyrtsev.com/'
 languageCode = 'en-us'
 title = 'Blip and Blinks'
-theme = 'github.com/nodejh/hugo-theme-mini'
 
 params.customCSS = [
     "css/syntax.css",
